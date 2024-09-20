@@ -16,5 +16,5 @@ if(cashOutPinNum === '12344'){
    //for UI
    document.getElementById('account-balance').innerText = updateBalanceAmount;
 }else
-    alert('ailed to cash out. please try again.');
+    alert('Failed to cash out. please try again.');
 })
