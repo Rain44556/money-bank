@@ -12,3 +12,12 @@ function getTextFieldValueById(id){
     const textValuesInNumbers = parseFloat(textValues);
     return textValuesInNumbers;
 }
+
+
+function displayFormById(id){
+    document.getElementById('added-money-form').classList.add('hidden');
+    document.getElementById('cash-out-form').classList.add('hidden');
+    document.getElementById('transaction-section').classList.add('hidden');
+
+    document.getElementById(id).classList.remove('hidden');
+}

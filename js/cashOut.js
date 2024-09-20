@@ -22,3 +22,22 @@
 //     alert('Failed to cash out. please try again.');
 // })
 
+
+
+
+// --------For not repeating the code:--------(smart way to call function)
+document.getElementById('btn-cashOut').addEventListener('click', function (event) {
+    event.preventDefault();
+    const cashOutMoney = getInputFieldValueById('cash-out-money-amount');
+    const cashOutPinNum = getInputFieldValueById('cash-out-money-pin');
+
+    if (cashOutPinNum === 1234) {
+        const mainBalance = getTextFieldValueById('balance-account');
+        let updateCashOutBalance = mainBalance - cashOutMoney;
+        document.getElementById('balance-account').innerText = updateCashOutBalance;
+
+    }
+    else {
+        alert("cash out can not be proceed");
+    }
+})
