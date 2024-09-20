@@ -39,4 +39,23 @@
 
 
 
-// --------For not repeating the code:--------
+// --------For not repeating the code:--------(smart way to call function)
+
+document.getElementById('btn-addMoney').addEventListener('click',function(event){
+    event.preventDefault();
+    // getInputFieldValueById();
+    const addMoneyAmount = getInputFieldValueById('added-money');
+    const addMoneyPin = getInputFieldValueById('added-money-pin');
+
+
+    if(addMoneyPin === 12345){
+        const moneyBalance = getTextFieldValueById('account-balance');
+        const updateBalance = moneyBalance + addMoneyAmount;
+
+        document.getElementById("account-balance").innerText = updateBalance;
+        console.log(moneyBalance, addMoneyAmount);
+    }else{
+        alert("Add money is failed")
+    }
+    
+})
