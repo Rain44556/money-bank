@@ -31,11 +31,30 @@ document.getElementById('btn-cashOut').addEventListener('click', function (event
     const cashOutMoney = getInputFieldValueById('cash-out-money-amount');
     const cashOutPinNum = getInputFieldValueById('cash-out-money-pin');
 
-    if (cashOutPinNum === 1234) {
-        const mainBalance = getTextFieldValueById('balance-account');
-        let updateCashOutBalance = mainBalance - cashOutMoney;
-        document.getElementById('balance-account').innerText = updateCashOutBalance;
 
+    if(isNaN(cashOutMoney)){
+        alert("Failed to withdraw money");
+        return;
+    }
+
+    if (cashOutPinNum === 12345) {
+        const mainBalance = getTextFieldValueById('account-balance');
+        if(mainBalance < cashOutMoney){
+            alert("You do not have the enough money to withdraw");
+            return;
+        }
+
+        let updateCashOutBalance = mainBalance - cashOutMoney;
+        document.getElementById('account-balance').innerText = updateCashOutBalance;
+
+        //transaction history
+        const div = document.createElement('div');
+        div.classList.add('bg-green-100');
+        div.innerHTML = `
+        <h3 class="text-2xl font-bold">Cash out</h3>
+        <p>${cashOutMoney} withdraw. Update Balance: ${updateCashOutBalance}</p>
+        `
+        document.getElementById('transaction-container').appendChild(div);
     }
     else {
         alert("cash out can not be proceed");

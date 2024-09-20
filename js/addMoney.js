@@ -47,13 +47,25 @@ document.getElementById('btn-addMoney').addEventListener('click',function(event)
     const addMoneyAmount = getInputFieldValueById('added-money');
     const addMoneyPin = getInputFieldValueById('added-money-pin');
 
+    if(isNaN(addMoneyAmount)){
+        alert("Failed to add money");
+        return;
+    }
+
 
     if(addMoneyPin === 12345){
         const moneyBalance = getTextFieldValueById('account-balance');
         const updateBalance = moneyBalance + addMoneyAmount;
-
         document.getElementById("account-balance").innerText = updateBalance;
-        console.log(moneyBalance, addMoneyAmount);
+
+        //transaction history
+        const entryParagraph = document.createElement('entryParagraph');
+        entryParagraph.innerText = `Added: ${addMoneyAmount} Tk. Update Bal: ${updateBalance}`
+        console.log(entryParagraph);
+
+        //should use a common function
+        document.getElementById('transaction-container').appendChild(entryParagraph);
+
     }else{
         alert("Add money is failed")
     }
